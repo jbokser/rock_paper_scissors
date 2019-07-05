@@ -1,0 +1,325 @@
+{
+  "contracts": {
+    "rps": {
+      "abi": [
+        {
+          "constant": false,
+          "inputs": [
+            {
+              "name": "_index",
+              "type": "uint256"
+            }
+          ],
+          "name": "claimAnExpiredMove",
+          "outputs": [],
+          "payable": false,
+          "stateMutability": "nonpayable",
+          "type": "function"
+        },
+        {
+          "constant": true,
+          "inputs": [],
+          "name": "bet",
+          "outputs": [
+            {
+              "name": "",
+              "type": "uint256"
+            }
+          ],
+          "payable": false,
+          "stateMutability": "view",
+          "type": "function"
+        },
+        {
+          "constant": true,
+          "inputs": [
+            {
+              "name": "_index",
+              "type": "uint256"
+            }
+          ],
+          "name": "seeAmove",
+          "outputs": [
+            {
+              "name": "",
+              "type": "uint8"
+            }
+          ],
+          "payable": false,
+          "stateMutability": "view",
+          "type": "function"
+        },
+        {
+          "constant": true,
+          "inputs": [
+            {
+              "name": "_nonce",
+              "type": "string"
+            },
+            {
+              "name": "_type",
+              "type": "uint8"
+            }
+          ],
+          "name": "makeMoveHash",
+          "outputs": [
+            {
+              "name": "_hash",
+              "type": "bytes32"
+            }
+          ],
+          "payable": false,
+          "stateMutability": "pure",
+          "type": "function"
+        },
+        {
+          "constant": true,
+          "inputs": [
+            {
+              "name": "_hash",
+              "type": "bytes32"
+            },
+            {
+              "name": "_nonce",
+              "type": "string"
+            }
+          ],
+          "name": "getMoveFromHashAndNonce",
+          "outputs": [
+            {
+              "name": "_type",
+              "type": "uint8"
+            }
+          ],
+          "payable": false,
+          "stateMutability": "pure",
+          "type": "function"
+        },
+        {
+          "constant": true,
+          "inputs": [
+            {
+              "name": "",
+              "type": "uint256"
+            }
+          ],
+          "name": "moves",
+          "outputs": [
+            {
+              "name": "timestamp",
+              "type": "uint256"
+            },
+            {
+              "name": "hash",
+              "type": "bytes32"
+            },
+            {
+              "name": "addr",
+              "type": "address"
+            },
+            {
+              "name": "_type",
+              "type": "uint8"
+            }
+          ],
+          "payable": false,
+          "stateMutability": "view",
+          "type": "function"
+        },
+        {
+          "constant": false,
+          "inputs": [],
+          "name": "acceptOwnership",
+          "outputs": [],
+          "payable": false,
+          "stateMutability": "nonpayable",
+          "type": "function"
+        },
+        {
+          "constant": true,
+          "inputs": [],
+          "name": "moveTimeOut",
+          "outputs": [
+            {
+              "name": "",
+              "type": "uint256"
+            }
+          ],
+          "payable": false,
+          "stateMutability": "view",
+          "type": "function"
+        },
+        {
+          "constant": true,
+          "inputs": [],
+          "name": "owner",
+          "outputs": [
+            {
+              "name": "",
+              "type": "address"
+            }
+          ],
+          "payable": false,
+          "stateMutability": "view",
+          "type": "function"
+        },
+        {
+          "constant": false,
+          "inputs": [
+            {
+              "name": "_index",
+              "type": "uint256"
+            },
+            {
+              "name": "_nonce",
+              "type": "string"
+            }
+          ],
+          "name": "showMyMove",
+          "outputs": [],
+          "payable": false,
+          "stateMutability": "nonpayable",
+          "type": "function"
+        },
+        {
+          "constant": false,
+          "inputs": [
+            {
+              "name": "_hash",
+              "type": "bytes32"
+            }
+          ],
+          "name": "makeAmove",
+          "outputs": [
+            {
+              "name": "_index",
+              "type": "uint256"
+            }
+          ],
+          "payable": true,
+          "stateMutability": "payable",
+          "type": "function"
+        },
+        {
+          "constant": true,
+          "inputs": [],
+          "name": "newOwner",
+          "outputs": [
+            {
+              "name": "",
+              "type": "address"
+            }
+          ],
+          "payable": false,
+          "stateMutability": "view",
+          "type": "function"
+        },
+        {
+          "constant": true,
+          "inputs": [],
+          "name": "prize",
+          "outputs": [
+            {
+              "name": "",
+              "type": "uint256"
+            }
+          ],
+          "payable": false,
+          "stateMutability": "view",
+          "type": "function"
+        },
+        {
+          "constant": false,
+          "inputs": [],
+          "name": "collect",
+          "outputs": [],
+          "payable": false,
+          "stateMutability": "nonpayable",
+          "type": "function"
+        },
+        {
+          "constant": true,
+          "inputs": [],
+          "name": "ownerCollect",
+          "outputs": [
+            {
+              "name": "",
+              "type": "uint256"
+            }
+          ],
+          "payable": false,
+          "stateMutability": "view",
+          "type": "function"
+        },
+        {
+          "constant": false,
+          "inputs": [
+            {
+              "name": "_newOwner",
+              "type": "address"
+            }
+          ],
+          "name": "transferOwnership",
+          "outputs": [],
+          "payable": false,
+          "stateMutability": "nonpayable",
+          "type": "function"
+        },
+        {
+          "inputs": [],
+          "payable": false,
+          "stateMutability": "nonpayable",
+          "type": "constructor"
+        },
+        {
+          "anonymous": false,
+          "inputs": [
+            {
+              "indexed": true,
+              "name": "_addr",
+              "type": "address"
+            },
+            {
+              "indexed": false,
+              "name": "_index",
+              "type": "uint256"
+            }
+          ],
+          "name": "MakeAmove",
+          "type": "event"
+        },
+        {
+          "anonymous": false,
+          "inputs": [
+            {
+              "indexed": true,
+              "name": "_from",
+              "type": "address"
+            },
+            {
+              "indexed": true,
+              "name": "_to",
+              "type": "address"
+            }
+          ],
+          "name": "OwnershipTransferred",
+          "type": "event"
+        }
+      ],
+      "address": "0x2306c5a10b2d8e1598cc6357574fd924ba8b6cbb",
+      "enable": true,
+      "name": "RockPaperScissors"
+    }
+  },
+  "node": {
+    "chain_id": 4,
+    "uri": "https://rinkeby.infura.io/v3/dfcfe210c8f04e409d4b99a198832b02"
+  },
+  "wallet": {
+    "addresses": {
+      "0x17f9fBb707Fa50eB98D7ec32cfEdA33d0924f1a1": "wpnDiGnCkcOGwplrZ8KWw4bCmGjClsKSbsKdwplnw4TCnGjClMKXacKXwpppZm7Cn2lmwprDicKdwpVpwpnCl8OLwpvDjMOGaMKVwpRoZ2rDh2zCl8OHccOIwp7CksKTw4hlwpbCk8Kab8KcwpxlacKdwplpa8KUwqnCnXdqwph7wp17a8KUwpVqZW9swqjCqWl6asKeZXRowppswqhnbsKrwqtswqzCqnZqaH55c8KWZMKWwpZ7wqbCq8KZdMKmZmtmeXw=",
+      "0xd08B5ac0800267f187AFe2452B7B176E5D98948d": "wpTClWvClsKUwp5owpTDg8KXwpllZsKUwpvCl8KdwpfDhsOLZsKSam7ClcKUZ2ppw4vCl8KTwpjCnWzDiWjCmcKcwpdmwpnCl2vClGVrZ2bCm8KYwpfCmGvDiMKaw4VmwpTCl8KWZsKdZsKVwqR7ccKVwqpqY8KowprCl2l5wpRqwpZue8KUwpd2aG5rwqTCpmh7asKncmNmwqh5wql5aMKawphowpbCp2l3aHBrZsKmd8KYwpZrwpvCn8KjZsKleG10a24="
+    },
+    "default": "0xd08B5ac0800267f187AFe2452B7B176E5D98948d"
+  }
+}
