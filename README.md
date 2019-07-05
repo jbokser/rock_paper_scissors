@@ -31,6 +31,12 @@ El código fuente del contrato puede encontrarle en:
 * Publicado en [bitbucket.org](https://bitbucket.org/jbokser/rock_paper_scissors/src/default/source/rock_paper_scissors.sol)
 * Publicado en [etherscan.io](https://rinkeby.etherscan.io/address/0x2306c5a10b2d8e1598cc6357574fd924ba8b6cbb#contracts) en la `testnet rinkeby`
 
+Para clonarse este repositorio con todos los fuentes debe correr el siguiente comando:
+
+```bash
+$ hg clone https://jbokser@bitbucket.org/jbokser/rock_paper_scissors
+```
+
 
 
 ##Contrato en la Testnet (Rinkeby)
