@@ -7,12 +7,14 @@ Se trata de un *smart contract* que permitiría jugar al clásico juego de Piedr
 
 
 
+##Links  donde puede encontrar este documento
+
+* [https://bitbucket.org/jbokser/rock_paper_scissors/src/default/README.md](https://bitbucket.org/jbokser/rock_paper_scissors/src/default/README.md)
+* [https://tinyurl.com/y3pjfxha](https://tinyurl.com/y3pjfxha)
+
+
+
 ##Descripción funcional
-
-
-
-
-
 
 
 
@@ -22,13 +24,22 @@ Se trata de un *smart contract* que permitiría jugar al clásico juego de Piedr
 
 
 
+##Código fuente del smart contract
+
+El código fuente del contrato puede encontrarle en:
+
+* Publicado en [bitbucket.org](https://bitbucket.org/jbokser/rock_paper_scissors/src/default/source/rock_paper_scissors.sol)
+* Publicado en [etherscan.io](https://rinkeby.etherscan.io/address/0x2306c5a10b2d8e1598cc6357574fd924ba8b6cbb#contracts) en la `testnet rinkeby`
+
+
+
 ##Contrato en la Testnet (Rinkeby)
 
 ```python
 Address = 0x2306c5A10b2D8e1598CC6357574FD924Ba8B6CBb
 ```
 
-Link para [verlo en `etherscan.io`](https://rinkeby.etherscan.io/address/0x2306c5a10b2d8e1598cc6357574fd924ba8b6cbb#contracts) 
+Link para [verlo en `etherscan.io`](https://rinkeby.etherscan.io/address/0x2306c5a10b2d8e1598cc6357574fd924ba8b6cbb) 
 
 
 
