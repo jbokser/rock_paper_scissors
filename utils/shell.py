@@ -678,7 +678,7 @@ def play_make_a_move(move_type, secret):
     """
     Hace una jugada del tipo (r), (p) o (s) escondiendo la misma con SECRET
 
-    (r) es Pierda
+    (r) es Piedra
 
     (p) es Papel
 
