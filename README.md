@@ -110,6 +110,7 @@ También puede [ver un cast](https://asciinema.org/a/ySsd8mJ40mLgkM4G0wsMlbcbU) 
 * Medir el tiempo con el numero de bloque y no con el `timestamp`. Si la `blockchain` se pone lenta no es culpa de los jugadores y se pueden hacer reclamos a jugadas expiradas que no corresponden.
 * Darle soporte para apuestas no fijas.
 * Mantener un *top 10* de ganadores, donde se acumulan 2 puntos por jugada ganada y 1 punto por jugada empatada.
+* Como lo que no se esta evaluando es la lógica del juego, se armo con el clásico *Rock, Paper, Scissors* pero hubiera quedado mas interesante usar la versión *Rock, Paper, Scissors, Lizard, Spock* de *The Big Bang Theory*.
 
 
 
