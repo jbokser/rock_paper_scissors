@@ -46,4 +46,4 @@ fi
 docker run -it --rm \
     -v $FULL_DIR/shell.json:/opt/shell.json \
     -v $FULL_DIR/shell.py:/opt/shell.py \
-    $IMG_NAME
+    $IMG_NAME /opt/shell.py "$@"

@@ -4,3 +4,4 @@ syntax: glob
 build/*.pdf
 build/*.html
 build/*.gif
+utils/_*.py

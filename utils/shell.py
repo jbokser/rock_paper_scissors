@@ -334,12 +334,17 @@ green  = lambda x: click.style(str(x), fg='bright_green')
 
 
 
-@shell(prompt = yellow('>>> '))
-def app():
-
+def intro():
     print(white("Simple Smart Contract Shell\nBy"),
           red('Juan S. Bokser <juan.bokser@gmail.com>'),
           '\n')
+
+
+
+@shell(prompt = yellow('>>> '))
+def app():
+
+    intro()
 
     for c in main.contracts.__dict__.values():
         print(white('Contract {}\n{}\n{}\n').format(
@@ -833,5 +838,28 @@ def owner_collect():
 
 
 
+@click.command()
+@click.option('--clean-up', is_flag=True, help='Remove all private keys')
+def start_up(clean_up):
+    """ Simple Smart Contract Shell By Juan S. Bokser <juan.bokser@gmail.com>
+    """
+    if clean_up:
+        intro()
+        print(yellow('//// REMOVING ALL PRIVATE KEYS ////'))
+        print()
+        if click.confirm(white('Do you want to continue?')):
+            conf['wallet'] = {'default': None, 'addresses': {}}
+            print()
+            print(white('Done!'))
+            print()
+        else:
+            print()
+            print(white('Abort!'))
+            print()
+    else:
+        app()
+
+
+
 if __name__ == '__main__':
-    app()
+    start_up()
