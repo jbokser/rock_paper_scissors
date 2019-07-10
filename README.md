@@ -91,6 +91,15 @@ function seeAmove(uint _index) public view returns (Result) {}
 
 
 
+##Eventos del contrato
+
+Se emite cuando se crea una nueva jugada. es la forma que tiene `makeAmove` de devolver el indice de la jugada creada.
+```javascript
+event MakeAmove(address indexed _addr, uint _index);
+```
+
+
+
 ##Programa cliente para interactuar con este contrato
 
 `shell.py` es una interface simple de linea de comandos desarrollada en `python3` que permite interactuar con el *smart contract* de este proyecto. 
