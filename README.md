@@ -77,7 +77,7 @@ function seeAmove(uint _index) public view returns (Result) {}
 
  ![](utils/images/shell.gif)
 
-Para mas información de esta herramienta ver el archivo `README.md` dentro de la carpeta `utils/` de este proyecto.
+Para mas información de esta herramienta ver el archivo [`README.md`](https://bitbucket.org/jbokser/rock_paper_scissors/src/default/utils/README.md) dentro de la carpeta [`utils/`](https://bitbucket.org/jbokser/rock_paper_scissors/src/default/utils/) de este proyecto.
 
 También puede [ver un cast](https://asciinema.org/a/3hfOdEYTRXyxszLmYa0XXETc3) de como se usa en `asciinema.org`
 
