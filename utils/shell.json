@@ -316,10 +316,7 @@
     "uri": "https://rinkeby.infura.io/v3/dfcfe210c8f04e409d4b99a198832b02"
   },
   "wallet": {
-    "addresses": {
-      "0x17f9fBb707Fa50eB98D7ec32cfEdA33d0924f1a1": "wpnDiGnCkcOGwplrZ8KWw4bCmGjClsKSbsKdwplnw4TCnGjClMKXacKXwpppZm7Cn2lmwprDicKdwpVpwpnCl8OLwpvDjMOGaMKVwpRoZ2rDh2zCl8OHccOIwp7CksKTw4hlwpbCk8Kab8KcwpxlacKdwplpa8KUwqnCnXdqwph7wp17a8KUwpVqZW9swqjCqWl6asKeZXRowppswqhnbsKrwqtswqzCqnZqaH55c8KWZMKWwpZ7wqbCq8KZdMKmZmtmeXw=",
-      "0xd08B5ac0800267f187AFe2452B7B176E5D98948d": "wpTClWvClsKUwp5owpTDg8KXwpllZsKUwpvCl8KdwpfDhsOLZsKSam7ClcKUZ2ppw4vCl8KTwpjCnWzDiWjCmcKcwpdmwpnCl2vClGVrZ2bCm8KYwpfCmGvDiMKaw4VmwpTCl8KWZsKdZsKVwqR7ccKVwqpqY8KowprCl2l5wpRqwpZue8KUwpd2aG5rwqTCpmh7asKncmNmwqh5wql5aMKawphowpbCp2l3aHBrZsKmd8KYwpZrwpvCn8KjZsKleG10a24="
-    },
-    "default": "0xd08B5ac0800267f187AFe2452B7B176E5D98948d"
+    "addresses": {},
+    "default": null
   }
 }
