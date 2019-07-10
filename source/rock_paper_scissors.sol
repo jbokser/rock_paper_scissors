@@ -1,6 +1,6 @@
 pragma solidity ^0.5.9;
 // RockPaperScissors por Juan S. Bokser <juan.bokser@gmail.com>
-
+// Para mas informacion https://tinyurl.com/y3pjfxha
 
 
 // Contrato que maneja dueño
