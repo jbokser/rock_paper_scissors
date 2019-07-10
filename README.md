@@ -99,9 +99,9 @@ function seeAmove(uint _index) public view returns (Result) {}
 
 Para mas información de esta herramienta ver el archivo [`README.md`](https://bitbucket.org/jbokser/rock_paper_scissors/src/default/utils/README.md) dentro de la carpeta [`utils/`](https://bitbucket.org/jbokser/rock_paper_scissors/src/default/utils/) de este proyecto.
 
-También puede [ver un cast](https://asciinema.org/a/3hfOdEYTRXyxszLmYa0XXETc3) de como se usa en `asciinema.org`
+También puede [ver un cast](https://asciinema.org/a/ySsd8mJ40mLgkM4G0wsMlbcbU) de como se usa en `asciinema.org`
 
-[![asciicast](https://asciinema.org/a/3hfOdEYTRXyxszLmYa0XXETc3.svg)](https://asciinema.org/a/3hfOdEYTRXyxszLmYa0XXETc3)
+[![asciicast](https://asciinema.org/a/ySsd8mJ40mLgkM4G0wsMlbcbU.svg)](https://asciinema.org/a/ySsd8mJ40mLgkM4G0wsMlbcbU)
 
 
 
