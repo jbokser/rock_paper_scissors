@@ -3,7 +3,7 @@
 
 Este es mi trabajo practico final del curso de *Desarrolladores de Blockchain* dictado por Leandro Rawicz *(CoinFabrik)* en la Universidad de Palermo. Fecha de entrega 2019-07-17.
 
-Se trata de un *smart contract* que permitiría jugar al clásico juego de Piedra Papel o Tijera. Tambien se incluye un pequeño programa cliente (`shell.py`) para interactuar con este contrato a través de [`infura.io`](https://infura.io/).
+Se trata de un *smart contract* que permitiría jugar al clásico juego de Piedra Papel o Tijera. También se incluye un pequeño programa cliente (`shell.py`) para interactuar con este contrato a través de [`infura.io`](https://infura.io/).
 
 
 
@@ -26,13 +26,15 @@ El `nonce` que elijamos deberá variar en cada jugada o se tornara fácil de pre
 
 Al momento de realizar la jugada se debe pagar la apuesta.
 
-Cuando ambos (el jugador y su oponente) ya realizaron sus jugadas con el `hash` tienen un periodo de tiempo para revelar sus jugadas con el `nonce` con la que la construyeron.
+Cuando ambos (el jugador y su oponente) ya realizaron sus jugadas con el `hash` tienen un periodo máximo para revelar sus jugadas con el `nonce` con la que la construyeron.
 
-Si alguno de los dos no revela la jugada en el periodo de tiempo estipulado el otro podrá reclamar haber ganado.
+Si alguno de los dos no revela la jugada en el periodo estipulado el otro podrá reclamar haber ganado.
 
-Cuando el último de ambos jugadores que le faltaba revelar su jugada, lo hace, o el jugador que si revelo su jugada reclama que su oponente no lo hizo en el tiempo adecuado, el contrato evaluara quien es el ganador y le trasferirá el premio al mismo. Ademas contabilizará la comisión que se quedará el dueño del contrato.
+Cuando el último de ambos jugadores que le faltaba revelar su jugada, lo hace, o el jugador que si revelo su jugada reclama que su oponente no lo hizo en el tiempo adecuado, el contrato evaluará quien es el ganador y le trasferirá el premio al mismo. Ademas contabilizará la comisión que se quedará el dueño del contrato.
 
-Por otro lado, en el momento que el dueño del contrato lo decida, podrá retirar las comisiones acumuladas.
+Si hay un empate se les devuelve las apuestas a ambos jugadores.
+
+Por último, en el momento que el dueño del contrato lo decida, podrá retirar las comisiones acumuladas.
 
 
 
@@ -89,7 +91,7 @@ function seeAmove(uint _index) public view returns (Result) {}
 
 
 
-##Shell
+##Programa cliente para interactuar con este contrato
 
 `shell.py` es una interface simple de linea de comandos desarrollada en `python3` que permite interactuar con el *smart contract* de este proyecto. 
 
@@ -100,6 +102,14 @@ Para mas información de esta herramienta ver el archivo [`README.md`](https://b
 También puede [ver un cast](https://asciinema.org/a/3hfOdEYTRXyxszLmYa0XXETc3) de como se usa en `asciinema.org`
 
 [![asciicast](https://asciinema.org/a/3hfOdEYTRXyxszLmYa0XXETc3.svg)](https://asciinema.org/a/3hfOdEYTRXyxszLmYa0XXETc3)
+
+
+
+##Mejoras a considerar en el futuro
+
+* Medir el tiempo con el numero de bloque y no con el `timestamp`. Si la `blockchain` se pone lenta no es culpa de los jugadores y se pueden hacer reclamos a jugadas expiradas que no corresponden.
+* Darle soporte para apuestas no fijas.
+* Mantener un *top 10* de ganadores, donde se acumulan 2 puntos por jugada ganada y 1 punto por jugada empatada.
 
 
 
