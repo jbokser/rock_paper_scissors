@@ -229,9 +229,17 @@ class Main():
 
 
 
-    def get_gas_price(self):
-        """ Obtiene el precio del gas """
+    @property
+    def gas_price(self):
+        """ Precio del gas """
         return self.web3.eth.gasPrice
+
+
+
+    @property
+    def block_number(self):
+        """ Numero del ultimo blocque """
+        return self.web3.eth.blockNumber
 
 
 
@@ -262,7 +270,7 @@ class Main():
 
         transaction = dict(chainId  = conf['node']['chain_id'],
                            nonce    = nonce,
-                           gasPrice = self.get_gas_price(),
+                           gasPrice = self.gas_price,
                            gas      = 100000,
                            to       = to_address,
                            value    = value)
@@ -287,7 +295,7 @@ class Main():
 
         transaction_dict = dict(chainId  = conf['node']['chain_id'],
                                 nonce    = nonce,
-                                gasPrice = self.get_gas_price(),
+                                gasPrice = self.gas_price,
                                 gas      = gas_limit,
                                 value    = value)
 
@@ -405,11 +413,41 @@ app.shell.doc_header   = white('Comandos disponibles:')
 app.shell.undoc_header = white('Ayuda y salida:')
 
 
-@app.command()
+
+@app.group(name='blockchain')
 @validate_is_connect
-def gas_price():
+def blockchain():
+    """ Referido a la blockchain """
+
+
+
+@blockchain.command(name='gas-price')
+def blockchain_gas_price():
     """ Muestra el precio actual del Gas """
-    print(white('gasPrice = {}').format(wei_to_str(main.get_gas_price())))
+    print(white('gasPrice = {}').format(wei_to_str(main.gas_price)))
+
+
+
+@blockchain.command(name='block-number')
+def blockchain_block_number():
+    """ Último numero de bloque """
+    print(white('blockNumber = {}').format(main.block_number))
+
+
+
+@blockchain.command(name='get-balance')
+@click.argument('address')
+def blockchain_get_balance(address):
+    """ Muestra el balance de ADDRESS """
+
+    try:
+        address = str(Web3.toChecksumAddress(str(address)))
+    except ValueError as e:
+        raise click.BadParameter(red(e))
+
+    print(white('{} = {}').format(
+        address,
+        wei_to_str(main.balance(address))))
 
 
 
