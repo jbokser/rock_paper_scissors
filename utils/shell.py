@@ -12,7 +12,7 @@ from time            import sleep
 from types           import SimpleNamespace
 from web3.exceptions import InvalidAddress, ValidationError
 from web3.exceptions import BadFunctionCallOutput
-import click, base64, hashlib, datetime
+import click, base64, hashlib, datetime, functools
 
 
 
@@ -200,8 +200,9 @@ class Main():
 
 
 
-    def __init__(self):
-        self.web3 = Web3(HTTPProvider(conf['node']['uri']))
+    def __init__(self, uri):
+        self._uri = uri
+        self.web3 = Web3(HTTPProvider(uri))
         self.contracts = SimpleNamespace()
         for c in conf['contracts']:
             if conf['contracts'][c]['enable']:
@@ -211,6 +212,20 @@ class Main():
                 obj  = self.web3.eth.contract(address = addr, abi = abi)
                 setattr(obj, 'name', name)
                 setattr(self.contracts, c, obj)
+
+
+
+    @property
+    def uri(self):
+        """ Devuelve donde se conecta """
+        return self._uri
+
+
+
+    @property
+    def is_connected(self):
+        """ Devuelve si esta conectado """
+        return self.web3.isConnected()
 
 
 
@@ -288,7 +303,7 @@ class Main():
 
 
 
-main = Main()
+main = Main(conf['node']['uri'])
 
 
 
@@ -341,6 +356,20 @@ def intro():
 
 
 
+def validate_is_connect(fnc):
+    """ Decorador para validar que uno este conectado """
+
+    @functools.wraps(fnc)
+    def wrapper():
+        if not main.is_connected:
+            raise click.ClickException(red(
+                'Can not connect to the node\n{}'.format(main.uri)))
+        return fnc()
+
+    return wrapper
+
+
+
 @shell(prompt = yellow('>>> '))
 def app():
 
@@ -350,15 +379,21 @@ def app():
         print(white('Contract {}\n{}\n{}\n').format(
             white(repr(c.name)),
             yellow(c.address),
-            white(wei_to_str(main.balance(c.address)))))
+            white(wei_to_str(main.balance(c.address)) if main.is_connected
+                                                      else '')))
 
     address = default_address()
 
     if address:
         print(white('Default address\n{}\n{}\n').format(
             yellow(address),
-            white(wei_to_str(main.balance(address)))))
+            white(wei_to_str(main.balance(address)) if main.is_connected
+                                                    else '')))
     else:
+        print()
+
+    if not main.is_connected:
+        print(red('Can not connect to the node\n{}'.format(main.uri)))
         print()
 
     print(white("Usar el comando 'help' para mas informacion"))
@@ -370,8 +405,8 @@ app.shell.doc_header   = white('Comandos disponibles:')
 app.shell.undoc_header = white('Ayuda y salida:')
 
 
-
 @app.command()
+@validate_is_connect
 def gas_price():
     """ Muestra el precio actual del Gas """
     print(white('gasPrice = {}').format(wei_to_str(main.get_gas_price())))
@@ -432,7 +467,8 @@ def accounts_list():
     if not wallet:
         print(white('\n'.join(['', '(none)', ''])))
         return
-    table = [ list(wei_to_tuple(main.balance(a))) +
+    table = [ list( wei_to_tuple(main.balance(a)) if main.is_connected
+                                                  else '?' ) +
               [ 'Yes' if wallet.default == a else 'No'] +
               [ yellow(a) if wallet.default == a else a]
              for a in wallet.addresses ]
@@ -447,6 +483,7 @@ def accounts_list():
 
 
 @accounts.command(name='balance')
+@validate_is_connect
 def accounts_balance():
     """ Muestra el balance de la direccion por defecto """
     if wallet.default:
@@ -506,6 +543,7 @@ units = ['wei', 'kwei', 'mwei', 'gwei', 'nanoether', 'microether',
 @click.argument('to_address')
 @click.argument('value', type=int)
 @click.argument('unit', default='wei', type=click.Choice(units))
+@validate_is_connect
 def acounts_tranfer(to_address, value, unit = 'wei'):
     """
     Transfiere VALUE [UNIT] de la cuenta por defecto a TO_ADDRESS
@@ -554,6 +592,7 @@ def show_transaction_move_index(transaction):
 
 
 @app.group(name='play')
+@validate_is_connect
 def play():
     """ Referido al juego de RockPaperScissors """
 
@@ -782,6 +821,7 @@ def play_timeout():
 
 
 @app.group(name='owner')
+@validate_is_connect
 def owner():
     """ Referido al dueño del contrato 'RockPaperScissors' """
 
@@ -863,3 +903,5 @@ def start_up(clean_up):
 
 if __name__ == '__main__':
     start_up()
+
+
