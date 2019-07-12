@@ -14,6 +14,9 @@ from web3.exceptions import InvalidAddress, ValidationError
 from web3.exceptions import BadFunctionCallOutput
 import click, base64, hashlib, datetime, functools
 
+poa_patch = False # Necesario en True para obtener bloques de rinkeby
+if poa_patch:
+    from web3.middleware import geth_poa_middleware
 
 
 json_file = '.'.join([splitext(__file__)[0], 'json'])
@@ -203,6 +206,8 @@ class Main():
     def __init__(self, uri):
         self._uri = uri
         self.web3 = Web3(HTTPProvider(uri))
+        if poa_patch:
+            self.web3.middleware_stack.inject(geth_poa_middleware, layer=0)
         self.contracts = SimpleNamespace()
         for c in conf['contracts']:
             if conf['contracts'][c]['enable']:
@@ -246,6 +251,12 @@ class Main():
     def balance(self, address):
         """ Obtiene el balance de un address """
         return self.web3.eth.getBalance(address)
+
+
+
+    def get_block(self, *args, **kargs):
+        """ Obtiene un bloque """
+        return self.web3.eth.getBlock(*args, **kargs)
 
 
 
@@ -941,5 +952,3 @@ def start_up(clean_up):
 
 if __name__ == '__main__':
     start_up()
-
-
