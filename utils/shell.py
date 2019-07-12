@@ -12,6 +12,7 @@ from time            import sleep
 from types           import SimpleNamespace
 from web3.exceptions import InvalidAddress, ValidationError
 from web3.exceptions import BadFunctionCallOutput
+from sys             import stdout
 import click, base64, hashlib, datetime, functools
 
 poa_patch = False # Necesario en True para obtener bloques de rinkeby
@@ -653,6 +654,64 @@ def play_bet():
     contract = main.contracts.rps
     bet      = contract.functions.bet().call()
     print(white('bet = {}').format(wei_to_str(bet)))
+
+
+
+@play.command(name='top')
+def play_top():
+    """ Muestra un top 10 de jugadores (experimental, esto no escala!) """
+
+    contract = main.contracts.rps
+
+    winners = {}
+    i = -1
+    print('Obtengo datos, jugada nro: ', end='')
+    stdout.flush()
+    while True:
+        i += 1
+        try:
+            timestamp, hash_, addr, move_type = \
+                contract.functions.moves(i).call()
+        except BadFunctionCallOutput:
+            print('hecho!')
+            stdout.flush()
+            break
+        print('{} '.format(i), end='')
+        stdout.flush()
+        timestamp = datetime.datetime.fromtimestamp(timestamp)
+        result    = contract.functions.seeAmove(i).call()
+        if result in [Result.win, Result.tie]:
+            if not addr in winners:
+                winners[addr] = {'win': 0, 'tie': 0, 'points': 0}
+            if result==Result.win:
+                winners[addr]['win'] += 1
+                winners[addr]['points'] += 2
+            else:
+                winners[addr]['tie'] += 1
+                winners[addr]['points'] += 1
+
+    table = []
+    for k, v in winners.items():
+        table.append((v['points'], k, v))
+    table.sort(reverse=True)
+    table = [[white(k), v['win'], v['tie'], white(v['points'])
+              ] for (p, k, v) in table]
+    table = table [:10]
+
+    if table:
+        print()
+        print(yellow('Top 10 de jugadores'))
+        print()
+        print(tabulate(table, headers=[white('Address'),
+                                       white('Ganadas'),
+                                       white('Empatadas'),
+                                       white('Puntos')]))
+    print()
+    print(yellow('Ultima jugada'))
+    print()
+    print('Numero = {}\nFecha  = {}\n'.format(
+        white(str(i-1 if i >0 else 0)), white(str(timestamp) if
+        timestamp else 'ND')))
 
 
 
