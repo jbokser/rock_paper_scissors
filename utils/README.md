@@ -15,7 +15,7 @@ Carpeta con herramientas y utilidades referidas al proyecto.
 ```shell
 $ pip3 install -r requirements.txt
 ```
-Otra opción es usar `./shell_in_docker.sh` que termina corriendo `./shell.py` dentro de un contenedor de `docker`. La primera vez que corra `./shell_in_docker.sh` demorara varios minutos ya que debe construir la imagen de `docker`. Se puede [ver un cast](https://asciinema.org/a/dO7kcTPaIj5Q6UXe97MYHQ4eK)  en `asciinema.org` de como sería la ejecución por primera vez.
+Otra opción es usar `./shell_in_docker.sh` que termina corriendo `./shell.py` dentro de un contenedor de `docker`. La primera vez que corra `./shell_in_docker.sh` demorara varios minutos ya que debe construir la imagen de `docker`. Se puede [ver un cast](https://asciinema.org/a/dO7kcTPaIj5Q6UXe97MYHQ4eK)  en `asciinema.org` de como sería la ejecución por primera vez. Requiere una version de `docker` mayor o igual a `17.05`.
 
 Por otro lado el archivo `./shell.json` es quien guarda todos los datos utilizados por `./shell.py`. Las claves privadas también se guardan en este archivo pero están encriptadas.
 
