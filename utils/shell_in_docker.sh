@@ -41,6 +41,8 @@ ENV LANG C.UTF-8
 CMD /opt/shell.py
 EOF
 fi
+if [ $? -ne 0 ]; then { echo "Failed, aborting." ; exit 1; } fi
+
 
 # Corro una instancia de docker interactiva y desechable
 docker run -it --rm \
