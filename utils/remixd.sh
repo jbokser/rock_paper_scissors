@@ -12,6 +12,7 @@ function check () {
     fi
 }
 check 'remixd'
+check 'dirname'
 
 # Me paro en el directorio de trabajo
 cd "$(dirname "$0")"
