@@ -588,12 +588,11 @@ units = ['wei', 'kwei', 'mwei', 'gwei', 'nanoether', 'microether',
          'milliether', 'ether']
 
 
-
+@validate_is_connect
 @accounts.command(name='tranfer')
 @click.argument('to_address')
 @click.argument('value', type=int)
 @click.argument('unit', default='wei', type=click.Choice(units))
-@validate_is_connect
 def acounts_tranfer(to_address, value, unit = 'wei'):
     """
     Transfiere VALUE [UNIT] de la cuenta por defecto a TO_ADDRESS
