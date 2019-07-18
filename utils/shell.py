@@ -13,7 +13,7 @@ from types           import SimpleNamespace
 from web3.exceptions import InvalidAddress, ValidationError
 from web3.exceptions import BadFunctionCallOutput
 from sys             import stdout
-import click, base64, hashlib, datetime, functools
+import click, base64, hashlib, datetime, functools, code, sys
 
 poa_patch = False # Necesario en True para obtener bloques de rinkeby
 if poa_patch:
@@ -987,7 +987,9 @@ def owner_collect():
 
 @click.command()
 @click.option('--clean-up', is_flag=True, help='Remove all private keys')
-def start_up(clean_up):
+@click.option('--python-console', is_flag=True,
+                                         help='Run interactive python console')
+def start_up(clean_up = False, python_console=False):
     """ Simple Smart Contract Shell By Juan S. Bokser <juan.bokser@gmail.com>
     """
     if clean_up:
@@ -1003,9 +1005,16 @@ def start_up(clean_up):
             print()
             print(white('Abort!'))
             print()
+    elif python_console:
+        intro()
+        print(yellow('//// FOR DEVELOPERS ONLY ////'))
+        print()
+        print('Python Interactive Console')
+        print('Type "help" for more information or "app()" for run the shell.')
+        sys.argv = [sys.argv[0]] # Borro los argumentos pasados
+        code.interact(banner='', local=dict(globals(), **locals()))
     else:
         app()
-
 
 
 if __name__ == '__main__':
