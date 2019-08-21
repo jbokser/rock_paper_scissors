@@ -1,5 +1,5 @@
 
-#![](images/logo.jpg) Rock Paper Scissors on Blockchain
+# ![](images/logo.jpg) Rock Paper Scissors on Blockchain
 
 Este es mi trabajo practico final del curso de *Desarrolladores de Blockchain* dictado por Leandro Rawicz *(CoinFabrik)* en la Universidad de Palermo. Fecha de entrega 2019-07-17.
 
@@ -7,14 +7,14 @@ Se trata de un *smart contract* que permitiría jugar al clásico juego de Piedr
 
 
 
-##Links  donde puede encontrar este documento
+## Links  donde puede encontrar este documento
 
 * [https://bitbucket.org/jbokser/rock_paper_scissors/src/default/README.md](https://bitbucket.org/jbokser/rock_paper_scissors/src/default/README.md)
 * [https://tinyurl.com/y3pjfxha](https://tinyurl.com/y3pjfxha)
 
 
 
-##Descripción funcional del contrato
+## Descripción funcional del contrato
 
 El contrato permite a dos personas que no necesitan conocerse jugar al clásico *"Piedra, papel o tijera"*
 
@@ -38,13 +38,13 @@ Por último, en el momento que el dueño del contrato lo decida, podrá retirar 
 
 
 
-###Diagrama de estados de una jugada
+### Diagrama de estados de una jugada
 
  ![](images/move_state.jpg)
 
 
 
-##Código fuente del smart contract
+## Código fuente del smart contract
 
 El código fuente del contrato puede encontrarle en:
 
@@ -59,7 +59,7 @@ $ hg clone https://jbokser@bitbucket.org/jbokser/rock_paper_scissors
 
 
 
-##Contrato en la Testnet (Rinkeby)
+## Contrato en la Testnet (Rinkeby)
 
 ```python
 Address = 0x2306c5A10b2D8e1598CC6357574FD924Ba8B6CBb
@@ -69,7 +69,7 @@ Link para [verlo en `etherscan.io`](https://rinkeby.etherscan.io/address/0x2306c
 
 
 
-##Funciones mas importantes del contrato
+## Funciones mas importantes del contrato
 
 Función para crear una jugada con un hash
 ```javascript
@@ -91,7 +91,7 @@ function seeAmove(uint _index) public view returns (Result) {}
 
 
 
-##Eventos del contrato
+## Eventos del contrato
 
 Se emite cuando se crea una nueva jugada. es la forma que tiene `makeAmove` de devolver el indice de la jugada creada.
 ```javascript
@@ -100,7 +100,7 @@ event MakeAmove(address indexed _addr, uint _index);
 
 
 
-##Programa cliente para interactuar con este contrato
+## Programa cliente para interactuar con este contrato
 
 `shell.py` es una interface simple de linea de comandos desarrollada en `python3` que permite interactuar con el *smart contract* de este proyecto. 
 
@@ -114,7 +114,7 @@ También puede [ver un cast](https://asciinema.org/a/ySsd8mJ40mLgkM4G0wsMlbcbU) 
 
 
 
-##Mejoras a considerar en el futuro
+## Mejoras a considerar en el futuro
 
 * Medir el tiempo con el numero de bloque y no con el `timestamp`. Si la `blockchain` se pone lenta no es culpa de los jugadores y se pueden hacer reclamos a jugadas expiradas que no corresponden.
 * Darle soporte para apuestas no fijas.
@@ -123,7 +123,7 @@ También puede [ver un cast](https://asciinema.org/a/ySsd8mJ40mLgkM4G0wsMlbcbU) 
 
 
 
-##Licencia
+## Licencia
 
 Este trabajo está bajo una [Licencia Creative Commons Atribución-NoComercial-CompartirIgual 4.0 Internacional](http://creativecommons.org/licenses/by-nc-sa/4.0/).
 
