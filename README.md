@@ -7,13 +7,6 @@ Se trata de un *smart contract* que permitiría jugar al clásico juego de Piedr
 
 
 
-## Links  donde puede encontrar este documento
-
-* [https://bitbucket.org/jbokser/rock_paper_scissors/src/default/README.md](https://bitbucket.org/jbokser/rock_paper_scissors/src/default/README.md)
-* [https://tinyurl.com/y3pjfxha](https://tinyurl.com/y3pjfxha)
-
-
-
 ## Descripción funcional del contrato
 
 El contrato permite a dos personas que no necesitan conocerse jugar al clásico *"Piedra, papel o tijera"*
@@ -48,13 +41,12 @@ Por último, en el momento que el dueño del contrato lo decida, podrá retirar 
 
 El código fuente del contrato puede encontrarle en:
 
-* Publicado en [bitbucket.org](https://bitbucket.org/jbokser/rock_paper_scissors/src/default/source/rock_paper_scissors.sol)
 * Publicado en [etherscan.io](https://rinkeby.etherscan.io/address/0x2306c5a10b2d8e1598cc6357574fd924ba8b6cbb#contracts) en la `testnet rinkeby`
 
 Para clonar este repositorio con todos los fuentes del proyecto debe correr el siguiente comando:
 
 ```bash
-$ hg clone https://jbokser@bitbucket.org/jbokser/rock_paper_scissors
+$ git clone https://github.com/jbokser/rock_paper_scissors.git
 ```
 
 
@@ -106,7 +98,7 @@ event MakeAmove(address indexed _addr, uint _index);
 
  ![](utils/images/shell.gif)
 
-Para mas información de esta herramienta ver el archivo [`README.md`](https://bitbucket.org/jbokser/rock_paper_scissors/src/default/utils/README.md) dentro de la carpeta [`utils/`](https://bitbucket.org/jbokser/rock_paper_scissors/src/default/utils/) de este proyecto.
+Para mas información de esta herramienta ver el archivo `README.md` dentro de la carpeta `utils/` de este proyecto.
 
 También puede [ver un cast](https://asciinema.org/a/ySsd8mJ40mLgkM4G0wsMlbcbU) de como se usa en `asciinema.org`
 
